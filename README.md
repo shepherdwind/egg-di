@@ -20,14 +20,16 @@ Dependency injection lib for [Egg.js](https://eggjs.org/).
 
 ```typescript
 // service
+import { Context } from 'egg-di';
+@Context
 export class HackerNews extends Service {
   foo() { }
 }
 
 // other service
-import { Inject } from 'egg-di';
+import { inject } from 'egg-di';
 export class Foo extends Service {
-  @Inject()
+  @inject()
   private readonly hackerNews: HackerNews;
 
   bar() {
@@ -36,9 +38,9 @@ export class Foo extends Service {
 }
 
 // other controller
-import { Inject } from 'egg-di';
+import { inject } from 'egg-di';
 export class Foo extends Controller {
-  @Inject()
+  @inject()
   private readonly hackerNews: HackerNews;
 
   bar() {
@@ -53,6 +55,8 @@ Test injected service.
 
 ```typescript
 // service
+import { Context } from 'egg-di';
+@Context
 export class HackerNews extends Service {
   foo() { }
 }
@@ -81,6 +85,8 @@ Mock injected service.
 
 ```typescript
 // service
+import { Context } from 'egg-di';
+@Context
 export class HackerNews extends Service {
   foo() { }
 }
