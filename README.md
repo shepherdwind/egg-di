@@ -5,14 +5,14 @@
 [![NPM version][npm-image]][npm-url]
 [![npm download][download-image]][download-url]
 
-[npm-image]: http://img.shields.io/npm/v/egg-dier.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/egg-dier
-[download-image]: https://img.shields.io/npm/dm/egg-dier.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-dier
-[travis-image]: https://img.shields.io/travis/shepherdwind/egg-dier.svg?style=flat-square
-[travis-url]: https://travis-ci.org/shepherdwind/egg-dier
-[coveralls-image]: https://img.shields.io/coveralls/shepherdwind/egg-dier.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/shepherdwind/egg-dier?branch=master
+[npm-image]: http://img.shields.io/npm/v/egg-di.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/egg-di
+[download-image]: https://img.shields.io/npm/dm/egg-di.svg?style=flat-square
+[download-url]: https://npmjs.org/package/egg-di
+[travis-image]: https://img.shields.io/travis/shepherdwind/egg-di.svg?style=flat-square
+[travis-url]: https://travis-ci.org/shepherdwind/egg-di
+[coveralls-image]: https://img.shields.io/coveralls/shepherdwind/egg-di.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/shepherdwind/egg-di?branch=master
 
 Dependency injection lib for [Egg.js](https://eggjs.org/).
 
