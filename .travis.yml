@@ -6,4 +6,4 @@ branches:
 node_js:
   - node
 script:
-  - npm run test
+  - npm run ci

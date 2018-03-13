@@ -21,8 +21,7 @@ Dependency injection lib for [Egg.js](https://eggjs.org/).
 ```typescript
 // service
 export class HackerNews extends Service {
-  foo() {
-  }
+  foo() { }
 }
 
 // other service
@@ -55,8 +54,7 @@ Test injected service.
 ```typescript
 // service
 export class HackerNews extends Service {
-  foo() {
-  }
+  foo() { }
 }
 
 // hackernews.test.ts
@@ -84,8 +82,7 @@ Mock injected service.
 ```typescript
 // service
 export class HackerNews extends Service {
-  foo() {
-  }
+  foo() { }
 }
 
 // bar.test.ts
