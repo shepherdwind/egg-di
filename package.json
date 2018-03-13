@@ -1,0 +1,66 @@
+{
+  "name": "egg-di",
+  "version": "1.0.0",
+  "description": "egg dependency injection lib",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shepherdwind/egg-di.git"
+  },
+  "keywords": [
+    "egg",
+    "di"
+  ],
+  "author": "Eward.song",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shepherdwind/egg-di/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^21.1.0",
+    "@types/node": "^8.0.0",
+    "@types/should": "^11.2.0",
+    "jest": "^21.0.0",
+    "should": "^13.1.0",
+    "ts-jest": "^21.0.0",
+    "ts-node": "^3.0.6",
+    "tslint": "^5.4.3",
+    "tslint-config-prettier": "^1.1.0",
+    "tslint-config-standard": "^6.0.0",
+    "typescript": "^2.3.4"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    }
+  },
+  "homepage": "https://github.com/shepherdwind/egg-di#readme",
+  "dependencies": {
+    "reflect-metadata": "^0.1.12"
+  }
+}
