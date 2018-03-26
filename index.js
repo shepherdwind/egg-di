@@ -5,13 +5,13 @@ const containnerKey = Symbol('containner');
 
 exports.inject = function() {
   return (target, key) => {
-    const c = Reflect.getMetadata('design:type', target, key);
-    const injectType = c[containnerKey];
-    if (!injectType || !InjectType[injectType]) {
-      throw new Error(`Inject ${c.name} component must decorator by @Context or @Application`);
-    }
     return {
       get() {
+        const c = Reflect.getMetadata('design:type', target, key);
+        const injectType = c[containnerKey];
+        if (!injectType || !InjectType[injectType]) {
+          throw new Error(`Inject ${c.name} component must decorator by @Context or @Application`);
+        }
         return exports.getComponent(c, this.ctx, injectType);
       },
     };

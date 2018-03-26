@@ -65,6 +65,7 @@ describe('egg-di', () => {
         @inject()
         b: B;
       }
+      (new D()).b;
     }).should.throw();
   });
 });
