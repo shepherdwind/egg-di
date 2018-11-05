@@ -3,11 +3,23 @@ require('reflect-metadata');
 const typeKey = Symbol('typeName');
 const containnerKey = Symbol('containner');
 
-exports.inject = function() {
+exports.inject = function(fallback) {
   return (target, key) => {
     return {
       get() {
-        const c = Reflect.getMetadata('design:type', target, key);
+        let c = Reflect.getMetadata('design:type', target, key);
+
+        // circular dependency caused can not get target
+        if (!c) {
+          // support @inject(() => Bar)
+          if (typeof fallback === 'function') {
+            c = fallback();
+          }
+          if (!c) {
+            throw new Error(`${target.constructor.name} inject ${key} fail, This problem is usually caused by a circular dependency`);
+          }
+        }
+
         const injectType = c[containnerKey];
         if (!injectType || !InjectType[injectType]) {
           throw new Error(`Inject ${c.name} component must decorator by @Context or @Application`);

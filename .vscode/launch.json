@@ -4,10 +4,12 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Jest All",
-            "program": "${workspaceRoot}/node_modules/jest/bin/jest",
+            "name": "Mocha All",
+            "program": "${workspaceRoot}/node_modules/.bin/_mocha",
             "args": [
-                "--runInBand"
+                "-r",
+                "ts-node/register",
+                "test/*.test.ts"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
@@ -15,9 +17,10 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Jest Current File",
-            "program": "${workspaceRoot}/node_modules/jest/bin/jest",
+            "name": "Mocha Current File",
+            "program": "${workspaceRoot}/node_modules/.bin/_mocha",
             "args": [
+                "-r ts-node/register",
                 "${file}"
             ],
             "console": "integratedTerminal",

@@ -8,9 +8,9 @@
     "index.d.ts"
   ],
   "scripts": {
-    "cov": "jest --collectCoverageFrom='[\"*.js\"]' --coverage",
-    "ci": "npm run cov && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "test": "jest"
+    "cov": "nyc --reporter=html --reporter=text mocha test/*.test.ts",
+    "ci": "npm run cov && nyc report --reporter=text-lcov | coveralls",
+    "test": "mocha test/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -26,41 +26,28 @@
     "url": "https://github.com/shepherdwind/egg-di/issues"
   },
   "devDependencies": {
-    "@types/jest": "^21.1.0",
+    "@types/mocha": "^5.2.5",
     "@types/node": "^8.0.0",
     "@types/should": "^11.2.0",
     "coveralls": "^2.13.3",
-    "jest": "^21.0.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
     "should": "^13.1.0",
-    "ts-jest": "^21.0.0",
+    "source-map-support": "^0.5.9",
     "ts-node": "^3.0.6",
+    "tslib": "^1.9.3",
     "tslint": "^5.4.3",
     "tslint-config-prettier": "^1.1.0",
     "tslint-config-standard": "^6.0.0",
     "typescript": "^2.3.4"
   },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
+  "nyc": {
+    "include": [
+      "index.js"
     ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 95,
-        "lines": 95,
-        "statements": 95
-      }
-    }
+    "reporter": [
+      "html"
+    ]
   },
   "homepage": "https://github.com/shepherdwind/egg-di#readme",
   "dependencies": {
