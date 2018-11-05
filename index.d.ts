@@ -1,4 +1,4 @@
-export function inject(): any;
+export function inject(fallback?: () => any): any;
 
 export enum InjectType {
   Context = 'Context',

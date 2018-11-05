@@ -49,6 +49,20 @@ export class Foo extends Controller {
 }
 ```
 
+### circular dependency
+
+```typescript
+// Foo
+export default class Foo {
+  @inject(() => Bar) readonly bar: Bar;
+}
+
+// Bar
+export default class Bar {
+  @inject(() => Foo) readonly foo: Foo;
+}
+```
+
 ### test
 
 Test injected service.

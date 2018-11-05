@@ -1,4 +1,4 @@
-import { getComponent, inject, Context, Application } from '../index';
+import { getComponent, inject, Context, Application } from '..';
 import 'should';
 
 @Context
@@ -46,9 +46,9 @@ describe('egg-di', () => {
 
   it('getComponent', () => {
     const b = new B(ctx);
-    const a = getComponent(A, ctx);
-    jest.spyOn(a, 'foo').mockImplementation(() => 'ddd');
-    b.dd().should.equal('ddd');
+    const a: A = getComponent(A, ctx);
+    b.dd().should.equal('bar');
+    a.foo().should.equal('bar');
   });
 
   it('service should only inited once', () => {
@@ -67,5 +67,18 @@ describe('egg-di', () => {
       }
       (new D()).b;
     }).should.throw();
+  });
+
+  it('circular dependency resolved', () => {
+    const O = require('./fixtures/ok/').default;
+    const ret = new O({ name: 'haha' }).start();
+    ret.should.equal('ok');
+  });
+
+  it('circular dependency', () => {
+    (function() {
+      const O = require('./fixtures/circular/').default;
+      new O({ name: 'haha' }).start();
+    }).should.throw(/circular dependency/);
   });
 });
