@@ -66,3 +66,6 @@ exports.getComponent = function(constructor, ctx, injectType = InjectType.Contex
   return containner.get(typeNameKey);
 }
 
+exports.INJECTED_TAG_CLASS = INJECTED_TAG_CLASS
+exports.INJECTED_TAG_PROP = INJECTED_TAG_PROP
+
