@@ -1,3 +1,7 @@
+## 1.2.1 / 2020-09-29
+
+- feat: add some reflect meta info [#4](https://github.com/shepherdwind/egg-di/pull/4)
+
 ## 1.2.0 / 2018-11-05
 
 - feat: inject support circular dependency [#3](https://github.com/shepherdwind/egg-di/pull/3)

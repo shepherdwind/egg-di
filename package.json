@@ -4,6 +4,7 @@
   "description": "egg dependency injection lib",
   "main": "index.js",
   "files": [
+    "lib/*",
     "index.js",
     "index.d.ts"
   ],
