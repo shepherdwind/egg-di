@@ -1,10 +1,12 @@
 require('reflect-metadata');
+const { INJECTED_TAG_CLASS, INJECTED_TAG_PROP } = require('./lib/const')
 
 const typeKey = Symbol('typeName');
 const containnerKey = Symbol('containner');
 
 exports.inject = function(fallback) {
   return (target, key) => {
+    Reflect.defineMetadata(INJECTED_TAG_PROP, InjectType.Property, target, key)
     return {
       get() {
         let c = Reflect.getMetadata('design:type', target, key);
@@ -20,7 +22,7 @@ exports.inject = function(fallback) {
           }
         }
 
-        const injectType = c[containnerKey];
+        const injectType = Reflect.getMetadata(INJECTED_TAG_CLASS, c);
         if (!injectType || !InjectType[injectType]) {
           throw new Error(`Inject ${c.name} component must decorator by @Context or @Application`);
         }
@@ -33,16 +35,17 @@ exports.inject = function(fallback) {
 const InjectType = {
   Context: 'Context',
   Application: 'Application',
+  Property: 'Property',
 };
 
 exports.InjectType = InjectType;
 
 exports.Context = function(target) {
-  target[containnerKey] = InjectType.Context;
+  Reflect.defineMetadata(INJECTED_TAG_CLASS, InjectType.Context, target)
 }
 
 exports.Application = function(target) {
-  target[containnerKey] = InjectType.Application;
+  Reflect.defineMetadata(INJECTED_TAG_CLASS, InjectType.Application, target)
 }
 
 exports.getComponent = function(constructor, ctx, injectType = InjectType.Context) {
