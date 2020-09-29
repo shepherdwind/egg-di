@@ -3,6 +3,7 @@ export function inject(fallback?: () => any): any;
 export enum InjectType {
   Context = 'Context',
   Application = 'Application',
+  Property = 'Property',
 }
 
 export function Context(constructor: Function): any;

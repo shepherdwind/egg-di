@@ -1,5 +1,8 @@
-import { getComponent, inject, Context, Application } from '..';
 import 'should';
+import 'reflect-metadata';
+import { getComponent, inject, Context, Application, InjectType } from '..';
+const { INJECTED_TAG_CLASS, INJECTED_TAG_PROP } = require('../lib/const');
+
 
 @Context
 class A { foo() { return 'bar'; }}
@@ -81,4 +84,17 @@ describe('egg-di', () => {
       new O({ name: 'haha' }).start();
     }).should.throw(/circular dependency/);
   });
+
+  it('injected class for context should be realized', () => {
+    Reflect.getMetadata(INJECTED_TAG_CLASS, A).should.equal(InjectType.Context);
+  })
+
+  it('injected class for application should be realized', () => {
+    Reflect.getMetadata(INJECTED_TAG_CLASS, A2).should.equal(InjectType.Application);
+  })
+
+  it('injected property should be realized', () => {
+    const ctx = { app: {} };
+    Reflect.getMetadata(INJECTED_TAG_PROP, new B(ctx), 'a').should.equal(InjectType.Property);
+  })
 });
